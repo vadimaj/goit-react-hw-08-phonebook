@@ -1,35 +1,43 @@
 import React from 'react';
-
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { removeContact } from '../../redux/contactSlice';
 import css from './ContactList.module.css';
 
-const ContactList = ({ contacts, onDeleteContact }) => (
-  <div className={css.controls}>
-    <ul>
-      {contacts.map(contact => (
-        <li key={contact.id} className={css['contact-list-item']}>
-          {contact.name} : {contact.number}
-          <button
-            type="button"
-            className={css['btn-delete']}
-            onClick={() => onDeleteContact(contact.id)}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const ContactList = () => {
+  const contacts = useSelector(state => state.contacts);
+  const inputFilter = useSelector(state => state.filter);
 
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    })
-  ),
-  onDeleteContact: PropTypes.func.isRequired,
+  const filteredContacts = () => {
+    const normalizedFilter = inputFilter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+  const dispatch = useDispatch();
+
+  const DeleteContactHandler = contactID => {
+    dispatch(removeContact(contactID));
+  };
+
+  return (
+    <div className={css.controls}>
+      <ul>
+        {filteredContacts().map(contact => (
+          <li key={contact.id} className={css['contact-list-item']}>
+            {contact.name} : {contact.number}
+            <button
+              type="button"
+              className={css['btn-delete']}
+              onClick={() => DeleteContactHandler(contact.id)}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
+
 export default ContactList;

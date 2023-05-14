@@ -1,9 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import css from './Filter.module.css';
+import { changeFilter } from '../../redux/filterSlice';
 
-import css from '../ContactForm/ContactForm.module.css';
-const Filter = props => {
-  const { value, onChange } = props;
+const Filter = () => {
+  const filterValue = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+
+  const filterChangeHandler = e => {
+    dispatch(changeFilter(e.currentTarget.value));
+  };
 
   return (
     <div className={css.filter}>
@@ -13,15 +20,11 @@ const Filter = props => {
         name="query"
         placeholder="search by name"
         className={css['form-input']}
-        value={value}
-        onChange={onChange}
+        value={filterValue}
+        onChange={filterChangeHandler}
       />
     </div>
   );
 };
 
-Filter.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-};
 export default Filter;
