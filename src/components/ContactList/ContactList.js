@@ -6,6 +6,7 @@ import css from './ContactList.module.css';
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(contactsSelector.getContacts);
+
   const inputFilter = useSelector(state => state.filter);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const ContactList = () => {
         <ul>
           {filteredContacts().map(contact => (
             <li key={contact.id} className={css['contact-list-item']}>
-              {contact.name} : {contact.number}
+              {contact.name} : {contact.phone}
               <button
                 type="button"
                 className={css['btn-delete']}
