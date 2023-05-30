@@ -36,7 +36,6 @@ const App = () => {
             <RestrictedRoute component={Login} redirectTo="/phonebook" />
           }
         />
-        {/* <Route path="phonebook" element={<Phonebook />} /> */}
 
         <Route
           path="phonebook"

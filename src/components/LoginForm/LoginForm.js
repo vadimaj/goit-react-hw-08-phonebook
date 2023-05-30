@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
 import css from '../RegisterForm/RegisterForm.module.css';
 import { authOperations } from '../../redux';
 
@@ -29,7 +28,6 @@ const LoginForm = () => {
       email,
       password,
     };
-    console.log(userData);
     dispatch(authOperations.loginUser(userData));
     reset();
   };

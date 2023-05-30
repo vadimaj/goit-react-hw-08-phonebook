@@ -32,7 +32,6 @@ export async function logoutUser() {
 export async function getUser(persistedToken) {
   token.set(persistedToken);
   const { data } = await axios.get('/users/current');
-  console.log(data);
   return data;
 }
 
@@ -47,7 +46,6 @@ export async function addContact(newContact) {
 }
 
 export async function removeContact(contactId) {
-  console.log(contactId);
   const { data } = await axios.delete(`/contacts/${contactId}`);
   return data.id;
 }

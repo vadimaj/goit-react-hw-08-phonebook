@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-// import { useSelector } from 'react-redux';
 import css from './RegisterForm.module.css';
 import { authOperations } from '../../redux';
 

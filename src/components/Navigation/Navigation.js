@@ -10,7 +10,7 @@ const Navigation = () => {
         </NavLink>
       </div>
 
-      <NavLink to="/phonebook" className={css['navlink']}>
+      <NavLink to="/phonebook" className={css.navlink}>
         Manage your contacts
       </NavLink>
     </nav>
