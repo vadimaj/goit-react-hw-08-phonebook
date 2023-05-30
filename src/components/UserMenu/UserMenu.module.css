@@ -1,0 +1,33 @@
+.usermenu-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.usermenu-text {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Open Sans';
+  font-size: 13px;
+  font-weight: 700;
+}
+.logoutbtn {
+  width: 100px;
+  height: 30px;
+  border-radius: 2px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  background-color: #00ad00;
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  min-width: 100px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logoutbtn:hover {
+  background-color: #00cd00;
+}

@@ -1,0 +1,5 @@
+.overlay {
+  height: 200px;
+  background-image: url(../../images/bg.jpg);
+  background-position: center;
+}

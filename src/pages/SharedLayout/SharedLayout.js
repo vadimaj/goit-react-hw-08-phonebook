@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../Header';
-
+import AppBar from '../../components/AppBar';
 const SharedLayout = () => {
   return (
     <>
-      <Header />
+      <AppBar />
       <Outlet />
     </>
   );

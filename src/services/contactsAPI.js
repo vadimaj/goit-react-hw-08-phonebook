@@ -1,18 +1,53 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://6461d891491f9402f4abd75e.mockapi.io';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
+export async function registerUser(userData) {
+  const { data } = await axios.post('/users/signup', userData);
+  token.set(data.token);
+  return data;
+}
+
+export async function loginUser(userData) {
+  const { data } = await axios.post('/users/login', userData);
+  token.set(data.token);
+  return data;
+}
+
+export async function logoutUser() {
+  const { data } = await axios.post('/users/logout');
+  token.unset();
+  return data;
+}
+
+export async function getUser(persistedToken) {
+  token.set(persistedToken);
+  const { data } = await axios.get('/users/current');
+  console.log(data);
+  return data;
+}
 
 export async function fetchContacts() {
-  const { data } = await axios.get(BASE_URL + '/contacts');
+  const { data } = await axios.get('/contacts');
   return data;
 }
 
 export async function addContact(newContact) {
-  const { data } = await axios.post(BASE_URL + '/contacts', newContact);
+  const { data } = await axios.post('/contacts', newContact);
   return data;
 }
 
 export async function removeContact(contactId) {
-  const { data } = await axios.delete(`${BASE_URL}/contacts/${contactId}`);
+  console.log(contactId);
+  const { data } = await axios.delete(`/contacts/${contactId}`);
   return data.id;
 }

@@ -1,0 +1,18 @@
+.phonebook-container {
+  padding: 20px;
+  background-image: url(images/mbg5.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 650px;
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contacts-wrap {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { contactsSelector, contactsOperations } from '../../redux';
+import { contactsSelector, contactsOperations } from '../../../redux';
 import css from './ContactList.module.css';
+import deleteIcon from '../../../icons/delete-icon.svg';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -25,20 +26,29 @@ const ContactList = () => {
   };
 
   return (
-    <div className={css.controls}>
+    <div className={css['contacts-list']}>
       {contacts.length > 0 && (
         <ul>
           {filteredContacts().map(contact => (
-            <li key={contact.id} className={css['contact-list-item']}>
-              {contact.name} : {contact.phone}
+            <div className={css['contacts-wrapper']}>
+              <li key={contact.id} className={css['contact-list-item']}>
+                {contact.name} : {contact.number}
+              </li>
               <button
                 type="button"
                 className={css['btn-delete']}
                 onClick={() => DeleteContactHandler(contact.id)}
+                title="Delete"
               >
-                Delete
+                <img
+                  src={`${deleteIcon}`}
+                  className={css.icon}
+                  alt="delete button"
+                  width={8}
+                  height={8}
+                />
               </button>
-            </li>
+            </div>
           ))}
         </ul>
       )}

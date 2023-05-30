@@ -1,0 +1,20 @@
+.authNav-link {
+  font-family: 'Open Sans';
+  display: inline-block;
+  text-decoration: none;
+  font-style: normal;
+  font-size: 13px;
+  color: #aac8e2;
+  font-weight: bold;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.authNav-link:hover {
+  transform: scale(1.07);
+}
+.authNav-link-active {
+  color: #aac8e2;
+}
+.authNav-container {
+  display: flex;
+  gap: 15px;
+}
