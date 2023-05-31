@@ -1,15 +1,16 @@
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Home from 'pages/Home';
-import SharedLayout from 'pages/SharedLayout';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import Phonebook from './components/Phonebook';
 import { authOperations } from './redux';
 import { useAuth } from 'components/hooks/useAuth';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
+import SharedLayout from 'pages/SharedLayout';
+const Home = lazy(() => import('pages/Home'));
+const Register = lazy(() => import('./pages/Register'));
+const Login = lazy(() => import('./pages/Login'));
+const Phonebook = lazy(() => import('./components/Phonebook'));
 
 const App = () => {
   const dispatch = useDispatch();

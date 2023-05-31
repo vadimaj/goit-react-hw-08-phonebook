@@ -35,7 +35,6 @@ const RegisterForm = () => {
       email,
       password,
     };
-    console.log(userData);
     dispatch(authOperations.registerUser(userData));
     reset();
   };
